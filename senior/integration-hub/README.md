@@ -20,10 +20,13 @@ Available endpoints:
 
 ## Tasks
 
+![List](images/list.png) ![form](images/form.png) ![details](images/details.png)
+
 ### 1. Environment Selector
 
 - Show a dropdown with all environments
 - "All" must be the first and default option
+- The selected environment should persist on page reload
 
 ### 2. Connector Cards
 
@@ -37,33 +40,33 @@ For each connector, display a card with:
   - "Learn more" if it doesn't
 - Primary "Create" button
 
-### 3. Connector Details Modal
+### 3. Filtering by Environment
 
-On clicking "See instances" or "Learn more", show a modal with:
-
-- Connector name and description
-- List of instances, grouped by environment
-- "Create instance" button
+- Selecting an environment should filter connectors data accordingly
 
 ### 4. Create Instance Modal
 
-On clicking "Create" or "Create instance", show a modal with:
+On clicking "Create", show a modal with:
 
 - Connector name and icon
 - Form including:
-  - Environment select (defaults to current selection)
+  - Environment radio buttons (with the selected environment as default. When `All` is selected, environment should be
+    the first proposition)
   - Instance name input
   - Dynamic fields from the connector's `configs`
   - Submit button
 - On submission, the instance should be created, the modal should close and the instance should be included in the list
   of all instances.
 
-### 5. Environment Selector (part 2)
+### 5. Connector Details Modal
 
-- Selecting an environment filters connector data accordingly
-- The selected environment should persist on page reload
-- Connector Details Modal should adapt based on the selected environment: only show instances for the selected
-  environment
+On clicking "See instances" or "Learn more", show a modal with:
+
+- Connector name and description
+- "Create instance" button
+- It should adapt based on the selected environment: only show instances for the selected environment and hide the
+  others
+- When `All` is selected, show all instances for all environments
 
 ## Evaluation Criteria
 

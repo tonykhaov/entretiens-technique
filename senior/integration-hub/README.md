@@ -24,7 +24,7 @@ Available endpoints:
 
 ### 1. Environment Selector
 
-- Show a dropdown with all environments
+- Show a dropdown/select with all environments
 - "All" must be the first and default option
 - The selected environment should persist on page reload
 
@@ -36,7 +36,7 @@ For each connector, display a card with:
 - Description
 - Icon
 - Secondary button:
-  - "See instances" if the connector has instances
+  - "See connectors" if the connector has instances
   - "Learn more" if it doesn't
 - Primary "Create" button
 
@@ -44,7 +44,7 @@ For each connector, display a card with:
 
 - Selecting an environment should filter connectors data accordingly
 
-### 4. Create Instance Modal
+### 4. Create Connector Instance Modal
 
 On clicking "Create", show a modal with:
 
@@ -58,15 +58,35 @@ On clicking "Create", show a modal with:
 - On submission, the instance should be created, the modal should close and the instance should be included in the list
   of all instances.
 
+The payload should be sent to this endpoint:
+
+- `POST /connectors/:environmentId/:connectorId/instances`
+
+```
+{
+  "name": "My instance",
+  "configs": {
+    "id-of-the-config-1": "value-1",
+    "id-of-the-config-2": "value-2"
+  }
+}
+```
+
 ### 5. Connector Details Modal
 
-On clicking "See instances" or "Learn more", show a modal with:
+Create a very dynamic form that can be opened from ANYWHERE:
+
+- On clicking "See connectors" or "Learn more"
+- Automatically after the creation of an instance
+- From the URL: let's say I add `?connectorId=my-connector-id` to the URL (do not implement this)
+
+You should show a modal with:
 
 - Connector name and description
-- "Create instance" button
+- List of all instances with the configs and the name shown as inputs and prefilled with their value.
 - It should adapt based on the selected environment: only show instances for the selected environment and hide the
   others
-- When `All` is selected, show all instances for all environments
+- When `All` is selected, show all instances grouped by environment
 
 ## Evaluation Criteria
 
